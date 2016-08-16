@@ -84,6 +84,8 @@ nanoMH_run(// number of free parameters
 
           ++ I_pt;
         }
+
+      //printf("ITER% 8u, PTS% 8u\n\n", N_iter, I_pt);
     }
 
   // clean up and return stat
@@ -107,11 +109,10 @@ struct nMH_Gpr_ws *
 nMH_Gpr_make_ws(int N_dim, double * sigma)
 {
   struct nMH_Gpr_ws * pt = TALLOC(struct nMH_Gpr_ws, 1);
-  double * sigma_i = TALLOC(double, N_dim);
+  pt ->  sigma = TALLOC(double, N_dim);
 
   // copy values
-  for(int i; i < N_dim; ++ i) sigma_i[i] = sigma[i];
-  pt -> sigma = sigma_i;
+  for(int i; i < N_dim; ++ i) (pt -> sigma)[i] = sigma[i];
 
   return pt;
 }

@@ -43,4 +43,8 @@ main(int argc, char ** argv)
   if(fw == NULL) return -1;
   fwrite(chain, sizeof(double), N_pt * 2, fw);
   fclose(fw);
+
+  // clear and exit
+  nMH_Gpr_free_ws(Gpr_ws_i);
+  return 0; 
 }
